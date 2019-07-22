@@ -11,7 +11,7 @@ resource "aws_security_group" "node" {
   }
 
   tags = {
-    "Name"                                      = "${var.project_name}-${var.env}-node"
+    "Name" = "${var.project_name}-${var.env}-node"
     "kubernetes.io/cluster/${var.project_name}-${var.env}" = "owned"
   }
 }

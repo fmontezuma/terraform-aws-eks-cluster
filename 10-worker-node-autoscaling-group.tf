@@ -29,9 +29,7 @@ curl https://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScrip
 unzip CloudWatchMonitoringScripts-1.2.2.zip && \
 rm CloudWatchMonitoringScripts-1.2.2.zip && \
 cd aws-scripts-mon >> results.txt
-echo "AWSAccessKeyId=AKIA5LNZ62SKFI75LY6T" >> awscreds.conf
-echo "AWSSecretKey=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" >> awscreds.conf
-crontab -l | { cat; echo "*/1 * * * * /opt/aws-scripts-mon/mon-put-instance-data.pl --aws-credential-file="/opt/aws-scripts-mon/awscreds.conf" --mem-util --mem-used --disk-space-util --disk-path=/ --swap-util --auto-scaling --from-cron"; } | crontab -
+crontab -l | { cat; echo "*/1 * * * * /opt/aws-scripts-mon/mon-put-instance-data.pl --mem-util --mem-used --disk-space-util --disk-path=/ --swap-util --auto-scaling --from-cron"; } | crontab -
 
 /etc/eks/bootstrap.sh --apiserver-endpoint '${aws_eks_cluster.eks.endpoint}' --b64-cluster-ca '${aws_eks_cluster.eks.certificate_authority[0].data}' '${var.project_name}-${var.env}'
 USERDATA
