@@ -37,7 +37,7 @@ USERDATA
 }
 
 resource "aws_launch_configuration" "launch_config" {
-  associate_public_ip_address = false
+  associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.node.name
   image_id = data.aws_ami.eks-worker.id
   instance_type = "${var.instance_type}"
