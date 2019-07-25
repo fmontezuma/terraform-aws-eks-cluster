@@ -24,7 +24,7 @@ resource "aws_lb_listener" "nlb_listener" {
   }
 }
 
-resource "aws_lb_listener" "nlb_listener" {
+resource "aws_lb_listener" "nlb_listener_https" {
   load_balancer_arn = "${aws_lb.nlb.arn}"
   port              = "443"
   protocol          = "TCP"
