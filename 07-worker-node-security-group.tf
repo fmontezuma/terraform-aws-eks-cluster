@@ -41,7 +41,7 @@ resource "aws_security_group_rule" "nlb-k8s-node" {
   from_port                = 30000
   protocol                 = "tcp"
   security_group_id        = aws_security_group.node.id
-  cidr_blocks              = ["${var.vpc_cidr}"]
+  cidr_blocks              = ["0.0.0.0/0"]
   to_port                  = 30000
   type                     = "ingress"
 }
