@@ -37,7 +37,7 @@ resource "aws_iam_role_policy" "cloudwatch_policy" {
   name = "cloudwatch-policy"
   role = aws_iam_role.iam_role_node.name
   policy = "${file("${path.module}/worker-node-iam-role-cloudwatch-policy.json")}"
-
+}
 
 resource "aws_iam_role_policy" "autoscaler_policy" {
   name = "autoscaler-policy"
