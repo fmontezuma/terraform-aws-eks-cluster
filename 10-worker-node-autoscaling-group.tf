@@ -36,6 +36,10 @@ USERDATA
 
 }
 
+resource "aws_ebs_encryption_by_default" "ebs_encryption" {
+  enabled = true
+}
+
 resource "aws_launch_configuration" "launch_config" {
   associate_public_ip_address = true
   iam_instance_profile = aws_iam_instance_profile.node.name
@@ -45,14 +49,6 @@ resource "aws_launch_configuration" "launch_config" {
   security_groups = [aws_security_group.node.id]
   user_data_base64 = base64encode(local.node-userdata)
   # key_name = "ireland-keypair"
-
-  root_block_device {
-    encrypted   = true
-  }
-
-  ebs_block_device {
-    encrypted   = true
-  }
 
   lifecycle {
     create_before_destroy = true
