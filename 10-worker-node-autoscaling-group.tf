@@ -46,6 +46,14 @@ resource "aws_launch_configuration" "launch_config" {
   user_data_base64 = base64encode(local.node-userdata)
   # key_name = "ireland-keypair"
 
+  root_block_device {
+    encrypted   = true
+  }
+
+  ebs_block_device {
+    encrypted   = true
+  }
+
   lifecycle {
     create_before_destroy = true
   }
