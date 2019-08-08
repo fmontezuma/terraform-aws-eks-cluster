@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 locals {
   config_map_aws_auth = <<CONFIGMAPAWSAUTH
 
@@ -14,6 +16,10 @@ data:
       groups:
         - system:bootstrappers
         - system:nodes
+    - rolearn: arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/kubectl
+      username: build
+      groups:
+        - system:masters
 CONFIGMAPAWSAUTH
 
 }
