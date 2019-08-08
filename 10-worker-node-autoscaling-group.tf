@@ -52,7 +52,7 @@ resource "aws_launch_configuration" "launch_config" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  count = length(var.subnets)
+  count = length(var.internal_subnet_ids)
 
   desired_capacity = 1
   launch_configuration = aws_launch_configuration.launch_config.id
