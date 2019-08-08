@@ -1,7 +1,7 @@
 resource "aws_security_group" "cluster" {
   name        = "${var.project_name}-${var.env}"
   description = "Cluster communication with worker nodes"
-  vpc_id      = "${aws_vpc.vpc.id}"
+  vpc_id      = "${var.vpc_id}"
 
   egress {
     from_port   = 0

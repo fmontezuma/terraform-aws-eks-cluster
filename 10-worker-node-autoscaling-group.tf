@@ -59,7 +59,7 @@ resource "aws_autoscaling_group" "asg" {
   max_size = 6
   min_size = 1
   name = "${var.project_name}-${var.env}-${count.index + 1}"
-  vpc_zone_identifier = [aws_subnet.subnet[count.index].id]
+  vpc_zone_identifier = [var.internal_subnet_ids[count.index]]
   enabled_metrics = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
   target_group_arns = [aws_lb_target_group.nlb_tg.arn]
 

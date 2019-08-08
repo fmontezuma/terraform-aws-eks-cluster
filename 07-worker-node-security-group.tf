@@ -1,7 +1,7 @@
 resource "aws_security_group" "node" {
   name        = "${var.project_name}-${var.env}-node"
   description = "Security group for all nodes in the cluster"
-  vpc_id      = aws_vpc.vpc.id
+  vpc_id      = var.vpc_id
 
   egress {
     from_port   = 0
