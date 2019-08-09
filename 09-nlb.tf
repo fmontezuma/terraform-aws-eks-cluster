@@ -4,6 +4,7 @@ resource "aws_lb" "nlb" {
   load_balancer_type = "network"
   subnets            = var.public_subnet_ids
   enable_deletion_protection = false
+  enable_cross_zone_load_balancing = true
 }
 
 resource "aws_lb_target_group" "nlb_tg" {
