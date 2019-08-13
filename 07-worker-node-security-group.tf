@@ -28,7 +28,7 @@ resource "aws_security_group_rule" "node-ingress-self" {
 
 resource "aws_security_group_rule" "node-ingress-cluster" {
   description              = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
-  from_port                = 1025
+  from_port                = 0
   protocol                 = "tcp"
   security_group_id        = aws_security_group.node.id
   source_security_group_id = aws_security_group.cluster.id
