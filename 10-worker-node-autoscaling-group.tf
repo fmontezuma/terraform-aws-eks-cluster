@@ -58,10 +58,9 @@ resource "aws_launch_configuration" "launch_config" {
 resource "aws_autoscaling_group" "asg" {
   count = length(var.internal_subnet_ids)
 
-  desired_capacity = 1
   launch_configuration = aws_launch_configuration.launch_config.id
-  max_size = 6
-  min_size = 1
+  min_size = var.asg_min_size
+  max_size = var.asg_max_size  
   name = "${var.project_name}-${var.env}-${count.index + 1}"
   vpc_zone_identifier = [var.internal_subnet_ids[count.index]]
   enabled_metrics = ["GroupMinSize", "GroupMaxSize", "GroupDesiredCapacity", "GroupInServiceInstances", "GroupPendingInstances", "GroupStandbyInstances", "GroupTerminatingInstances", "GroupTotalInstances"]
