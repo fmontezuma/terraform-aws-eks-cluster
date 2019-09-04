@@ -1,6 +1,6 @@
 resource "aws_lb" "nlb" {
   name               = "${var.project_name}-${var.env}"
-  internal           = false
+  internal           = var.nlb_internal
   load_balancer_type = "network"
   subnets            = var.public_subnet_ids
   enable_deletion_protection = false

@@ -7,3 +7,4 @@ variable internal_subnet_ids {}
 variable public_subnet_ids {}
 variable asg_min_size {}
 variable asg_max_size {}
+variable nlb_internal {}
