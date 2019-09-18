@@ -12,5 +12,7 @@ variable nlb_internal {}
 variable "local_exec_interpreter" {
   description = "Command to run for local-exec resources. Must be a shell-style interpreter. If you are on Windows Git Bash is a good choice."
   type        = list(string)
-  default     = ["sh", "-c"]
+  default     = ["bash", "-c"]
 }
+
+variable aws_profile_name {}

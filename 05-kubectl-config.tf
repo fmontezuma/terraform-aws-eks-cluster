@@ -1,7 +1,5 @@
 locals {
   kubeconfig = <<KUBECONFIG
-
-
 apiVersion: v1
 clusters:
 - cluster:
