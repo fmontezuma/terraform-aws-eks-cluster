@@ -33,6 +33,8 @@ rm aws_auth_configmap.yaml;
 COMMAND
   }
 
+  interpreter = ["/bin/bash", "-c"]
+
   triggers = {
     eks_endpoint = aws_eks_cluster.eks.endpoint
   }
