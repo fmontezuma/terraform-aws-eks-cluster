@@ -25,7 +25,7 @@ CONFIGMAPAWSAUTH
 resource "null_resource" "create_config_map_aws_auth_kubeconfig" {
   provisioner "local-exec" {
     working_dir = path.module
-    interpreter = ["/bin/bash", "-c"]
+    interpreter = var.local_exec_interpreter
     command = <<COMMAND
 echo "${local.kubeconfig}" > ~/.kube/kubeconfig-${var.project_name}-${var.env}.yaml & \
 echo "${local.config_map_aws_auth}" > aws_auth_configmap.yaml & \
