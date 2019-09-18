@@ -34,6 +34,6 @@ COMMAND
   }
 
   triggers = {
-    eks = aws_eks_cluster.eks
+    eks_endpoint = aws_eks_cluster.eks.endpoint
   }
 }
