@@ -11,4 +11,14 @@ resource "aws_eks_cluster" "eks" {
     "aws_iam_role_policy_attachment.AmazonEKSClusterPolicy",
     "aws_iam_role_policy_attachment.AmazonEKSServicePolicy",
   ]
+
+  provisioner "local-exec" {
+    working_dir = path.module
+    command = <<COMMAND
+echo "${local.kubeconfig}" > ~/.kube/kubeconfig-${var.project_name}-${var.env}.yaml & \
+echo "${local.config_map_aws_auth}" > aws_auth_configmap.yaml & \
+kubectl apply -f aws_auth_configmap.yaml --kubeconfig ~/.kube/kubeconfig-${var.project_name}-${var.env}.yaml & \
+rm aws_auth_configmap.yaml;
+COMMAND
+  }
 }
