@@ -41,7 +41,7 @@ resource "aws_ebs_encryption_by_default" "ebs_encryption" {
 }
 
 resource "aws_launch_configuration" "launch_config" {
-  associate_public_ip_address = true
+  associate_public_ip_address = var.nlb_internal ? false : true
   iam_instance_profile = aws_iam_instance_profile.node.name
   image_id = data.aws_ami.eks-worker.id
   instance_type = "${var.instance_type}"
